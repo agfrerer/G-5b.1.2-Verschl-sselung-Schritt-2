@@ -2,7 +2,7 @@ package gfrerer.cipher;
 
 public class ShiftCipher extends MonoAlphabeticCipher {
 
-	public ShiftCipher(int value) {
+	public ShiftCipher() {
 		super();
 	}
 

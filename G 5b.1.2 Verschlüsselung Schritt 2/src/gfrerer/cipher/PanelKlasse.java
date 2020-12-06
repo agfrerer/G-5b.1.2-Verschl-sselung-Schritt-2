@@ -13,18 +13,18 @@ import javax.swing.*;
  * @version 26.09.2020
  */
 public class PanelKlasse extends JPanel {
-	private MonoAlphabeticCipher mac;
-	private JPanel p1, p2, p3;
-	private JLabel l1;
+	private JPanel p1, p2, p3, p4;
+	private JLabel l1, l2;
 	private JTextField textfeld;
 	private JRadioButton caesar, subst;
 	private ButtonGroup bg;
 	private JButton ver, ent;
+	private Controller c;
 
-	public PanelKlasse(MonoAlphabeticCipher mac) {
+	public PanelKlasse(Controller c) {
 		this.setLayout(new BorderLayout());
 
-		this.mac = mac;
+		this.c = c;
 		
 		//Gesamt
 		GridLayout grid = new GridLayout(4, 1);
@@ -49,8 +49,8 @@ public class PanelKlasse extends JPanel {
 		subst = new JRadioButton("Geheimalphabet");
 		bg = new ButtonGroup();
 		
-		caesar.addActionListener(mac);
-		subst.addActionListener(mac);
+		caesar.addActionListener(c);
+		subst.addActionListener(c);
 		
 		p2.setLayout(auswahl);
 		bg.add(caesar);
@@ -65,13 +65,20 @@ public class PanelKlasse extends JPanel {
 		ver = new JButton("Verschlüsseln");
 		ent = new JButton("Entschlüsseln");
 		
-		ver.addActionListener(mac);
-		ent.addActionListener(mac);
+		ver.addActionListener(c);
+		ent.addActionListener(c);
 		
 		p3.setLayout(schluessel);
 		p3.add(ver);
 		p3.add(ent);
 		this.add(p3);
+		
+		//Ausgabe unten
+		p4 = new JPanel();
+		l2 = new JLabel("");
+		
+		p4.add(l2);
+		this.add(p4);
 	}
 	
 	public String getEingabe() {
@@ -94,6 +101,10 @@ public class PanelKlasse extends JPanel {
 			rueckgabe = "Secret";
 		}
 		return rueckgabe;
+	}
+	
+	public void setPanel(String text) {
+		l2.setText(text);
 	}
 }
 
