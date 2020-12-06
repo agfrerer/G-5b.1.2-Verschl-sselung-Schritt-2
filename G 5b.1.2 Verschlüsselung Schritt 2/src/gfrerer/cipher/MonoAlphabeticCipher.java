@@ -72,6 +72,8 @@ public class MonoAlphabeticCipher implements Cipher {
 		}catch(Exception e) {
 			System.out.println("Etwas ist in Ihrem Alphabet schiefgegangen!");
 		}
-		
+		ShiftCipher shc = new ShiftCipher(10);
+		shc.setShiftValue(10);
+		System.out.println(shc.getSecretAlphabet());
 	}
 }
