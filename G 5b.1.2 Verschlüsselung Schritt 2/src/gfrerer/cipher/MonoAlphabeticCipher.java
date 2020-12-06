@@ -75,5 +75,9 @@ public class MonoAlphabeticCipher implements Cipher {
 		ShiftCipher shc = new ShiftCipher(10);
 		shc.setShiftValue(10);
 		System.out.println(shc.getSecretAlphabet());
+		
+		MonoAlphabeticCipher mac = new MonoAlphabeticCipher();
+		PanelKlasse p = new PanelKlasse(mac);
+		FrameKlasse f = new FrameKlasse(p);
 	}
 }
