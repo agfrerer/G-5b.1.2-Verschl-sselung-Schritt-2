@@ -49,6 +49,9 @@ public class PanelKlasse extends JPanel {
 		subst = new JRadioButton("Geheimalphabet");
 		bg = new ButtonGroup();
 		
+		caesar.addActionListener(mac);
+		subst.addActionListener(mac);
+		
 		p2.setLayout(auswahl);
 		bg.add(caesar);
 		bg.add(subst);
@@ -62,10 +65,35 @@ public class PanelKlasse extends JPanel {
 		ver = new JButton("Verschlüsseln");
 		ent = new JButton("Entschlüsseln");
 		
+		ver.addActionListener(mac);
+		ent.addActionListener(mac);
+		
 		p3.setLayout(schluessel);
 		p3.add(ver);
 		p3.add(ent);
 		this.add(p3);
+	}
+	
+	public String getEingabe() {
+		return this.textfeld.getText();
+	}
+	
+	public JButton getVer() {
+		return this.ver;
+	}
+	
+	public JButton getEnt() {
+		return this.ent;
+	}
+	
+	public String selected() {
+		String rueckgabe = "";
+		if(this.caesar.isSelected()) {
+			rueckgabe = "Cäsar";
+		}else if(this.subst.isSelected()) {
+			rueckgabe = "Secret";
+		}
+		return rueckgabe;
 	}
 }
 

@@ -27,4 +27,8 @@ public class ShiftCipher extends MonoAlphabeticCipher {
 		}
 		super.setSecretAlphabet(secretAlphabet);
 	}
+	
+	public String getSecretAlphabet() {
+		return super.getSecretAlphabet();
+	}
 }

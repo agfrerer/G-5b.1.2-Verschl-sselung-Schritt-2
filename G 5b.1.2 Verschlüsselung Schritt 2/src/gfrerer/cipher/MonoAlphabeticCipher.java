@@ -1,12 +1,19 @@
 package gfrerer.cipher;
 
-public class MonoAlphabeticCipher implements Cipher {
+import java.awt.event.*;
+import java.io.*;
+
+import javax.swing.JOptionPane;
+
+public class MonoAlphabeticCipher implements Cipher, ActionListener {
 	private String secretAlphabet, alphabet;
 	private boolean weiter;
+	private PanelKlasse panel;
 
 	public MonoAlphabeticCipher() {
 		this.secretAlphabet = "";
 		this.alphabet = "abcdefghijklmnopqrstuvwxyzäöüß";
+		this.panel = new PanelKlasse(this);
 	}
 
 	public String getSecretAlphabet() {
@@ -79,5 +86,40 @@ public class MonoAlphabeticCipher implements Cipher {
 		MonoAlphabeticCipher mac = new MonoAlphabeticCipher();
 		PanelKlasse p = new PanelKlasse(mac);
 		FrameKlasse f = new FrameKlasse(p);
+	}
+	
+	public void actionPerformed(ActionEvent e)  {
+		int wert = fenster();
+		String wort = panel.getEingabe();
+		String welcher = panel.selected();
+		ShiftCipher sc = new ShiftCipher(0);
+		
+		if(e.getSource() == panel.getVer()){
+			
+			if(welcher.equals("Cäsar")) {
+				sc.encrypt(wort);
+			}else if(welcher.equals("Secret")) {
+				sc.setShiftValue(wert);
+			}
+		}else if(e.getSource() == panel.getEnt()){
+			
+			if(welcher.equals("Cäsar")) {
+				sc.decrypt(wort);
+			}else if(welcher.equals("Secret")) {
+				sc.decrypt(sc.getSecretAlphabet());
+			}
+		}
+	}
+	
+	public int fenster() {
+		String wert = JOptionPane.showInputDialog("Geben Sie eine Zahl zum Verschlüsseln des Alphabets an!");
+		int zahl = 0;
+		try {
+			zahl = Integer.parseInt(wert);
+			return zahl;
+		}catch(NumberFormatException e) {
+			
+		}
+		return zahl;
 	}
 }
