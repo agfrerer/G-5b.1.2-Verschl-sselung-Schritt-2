@@ -64,6 +64,11 @@ public class Controller implements ActionListener {
 		int wert = 0;
 		while(zahl==false) {
 			String eingabe = JOptionPane.showInputDialog("Geben Sie einen " + text + "schlüsselungswert ein!");
+			if (eingabe == null) {
+				System.exit(0);
+			} else if (eingabe.equals("")) {
+				eingabe = "0";
+			}
 			try {
 				wert = Integer.parseInt(eingabe);
 				zahl = true;
@@ -76,6 +81,9 @@ public class Controller implements ActionListener {
 	
 	public String eingabeABC() {
 		String eingabe = JOptionPane.showInputDialog("Geben Sie ein Geheimalphabet ein!");
+		if (eingabe == null) {
+			System.exit(0);
+		}
 		this.substC.setSecretAlphabet(eingabe);
 		return eingabe;
 	}

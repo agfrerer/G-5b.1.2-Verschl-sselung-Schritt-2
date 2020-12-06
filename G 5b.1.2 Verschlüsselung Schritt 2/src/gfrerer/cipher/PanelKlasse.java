@@ -29,6 +29,7 @@ public class PanelKlasse extends JPanel {
 		//Gesamt
 		GridLayout grid = new GridLayout(4, 1);
 		this.setLayout(grid);
+		Font schrift = new Font(Font.SANS_SERIF, Font.BOLD, 15);
 		
 		//Textfeld + Überschrift
 		GridLayout oben = new GridLayout(2, 1);
@@ -38,6 +39,7 @@ public class PanelKlasse extends JPanel {
 
 		p1.setLayout(oben);
 		l1.setText("Geben Sie Ihren gewünschten Text ein!");
+		l1.setFont(schrift);
 		p1.add(l1);
 		p1.add(textfeld);
 		this.add(p1, BorderLayout.PAGE_START);
@@ -51,6 +53,8 @@ public class PanelKlasse extends JPanel {
 		
 		caesar.addActionListener(c);
 		subst.addActionListener(c);
+		caesar.setFont(schrift);
+		subst.setFont(schrift);
 		
 		p2.setLayout(auswahl);
 		bg.add(caesar);
@@ -67,6 +71,8 @@ public class PanelKlasse extends JPanel {
 		
 		ver.addActionListener(c);
 		ent.addActionListener(c);
+		ver.setFont(schrift);
+		ent.setFont(schrift);
 		
 		p3.setLayout(schluessel);
 		p3.add(ver);
@@ -104,7 +110,9 @@ public class PanelKlasse extends JPanel {
 	}
 	
 	public void setPanel(String text) {
+		Font schrift = new Font(Font.SANS_SERIF, Font.BOLD, 20);
 		l2.setText(text);
+		l2.setFont(schrift);
 	}
 }
 
